@@ -2,30 +2,14 @@
   "name": "backoff-rxjs",
   "version": "6.5.7",
   "description": "A collection of helpful RxJS operators to deal with backoff strategies (like exponential backoff)",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "es2015": "./dist/esm2015/index.js",
-  "module": "./dist/esm5/index.js",
-  "scripts": {
-    "dist": "yarn run dist:build && yarn run dist:copy",
-    "dist:build": "yarn run dist:clean && yarn run dist:build:cjs && yarn run dist:build:esm2015 && yarn run dist:build:esm5 && yarn run dist:build:bundle",
-    "dist:build:bundle": "webpack --config webpack.config.js && webpack --config webpack.config.js --env.production",
-    "dist:build:cjs": "tsc -p tsconfig-dist-cjs.json",
-    "dist:build:esm2015": "tsc -p tsconfig-dist-esm2015.json",
-    "dist:build:esm5": "tsc -p tsconfig-dist-esm5.json",
-    "dist:clean": "rimraf dist && rimraf bundles/backoff-rxjs.* && mkdirp bundles",
-    "dist:copy": "node scripts/pack.js && cpy bundles/backoff-rxjs.* dist/bundles/ && cpy CHANGELOG.md LICENSE README.md dist/",
-    "lint": "tslint --project tsconfig.json src/**/*.ts",
-    "prettier": "prettier --write \"**/*.ts\"",
-    "test": "yarn run test:build && yarn run test:jest",
-    "test:build": "yarn run test:clean && tsc -p tsconfig.json",
-    "test:clean": "rimraf build",
-    "test:jest": "jest",
-    "coverage": "jest --coverage --coverageDirectory=./coverage && open ./coverage/lcov-report/index.html"
-  },
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "es2015": "./esm2015/index.js",
+  "module": "./esm5/index.js",
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alex-okrushko/backoff-rxjs.git"
+    "url": "git+https://github.com:JMAnn432015/backoff-rxjs.git"
   },
   "keywords": [
     "RxJS",
@@ -41,23 +25,8 @@
   "peerDependencies": {
     "rxjs": "^6.5.5 || ^7.5.0"
   },
-  "devDependencies": {
-    "@types/jest": "^25.2.2",
-    "@types/node": "^12.12.3",
-    "cpy-cli": "^2.0.0",
-    "jest": "^26.0.1",
-    "mkdirp": "^0.5.1",
-    "prettier": "^2.0.5",
-    "rimraf": "^2.6.3",
-    "ts-jest": "^26.0.0",
-    "ts-loader": "^5.3.3",
-    "ts-node": "^8.0.2",
-    "tsconfig-paths": "^3.4.0",
-    "tslint": "^5.20.0",
-    "typescript": "^3.4",
-    "webpack": "^4.29.1",
-    "webpack-cli": "^3.2.3",
-    "webpack-rxjs-externals": "^2.0.0"
-  },
-  "dependencies": {}
+  "devDependencies": {},
+  "dependencies": {},
+  "private": false,
+  "unpkg": "./bundles/backoff-rxjs.min.umd.js"
 }
