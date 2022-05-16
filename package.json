@@ -7,21 +7,8 @@
   "es2015": "./dist/esm2015/index.js",
   "module": "./dist/esm5/index.js",
   "scripts": {
-    "dist": "yarn run dist:build && yarn run dist:copy",
-    "dist:build": "yarn run dist:clean && yarn run dist:build:cjs && yarn run dist:build:esm2015 && yarn run dist:build:esm5 && yarn run dist:build:bundle",
-    "dist:build:bundle": "webpack --config webpack.config.js && webpack --config webpack.config.js --env.production",
-    "dist:build:cjs": "tsc -p tsconfig-dist-cjs.json",
-    "dist:build:esm2015": "tsc -p tsconfig-dist-esm2015.json",
-    "dist:build:esm5": "tsc -p tsconfig-dist-esm5.json",
-    "dist:clean": "rimraf dist && rimraf bundles/backoff-rxjs.* && mkdirp bundles",
-    "dist:copy": "node scripts/pack.js && cpy bundles/backoff-rxjs.* dist/bundles/ && cpy CHANGELOG.md LICENSE README.md dist/",
-    "lint": "tslint --project tsconfig.json src/**/*.ts",
-    "prettier": "prettier --write \"**/*.ts\"",
-    "test": "yarn run test:build && yarn run test:jest",
-    "test:build": "yarn run test:clean && tsc -p tsconfig.json",
-    "test:clean": "rimraf build",
-    "test:jest": "jest",
-    "coverage": "jest --coverage --coverageDirectory=./coverage && open ./coverage/lcov-report/index.html"
+    "prepare": "npm run build",
+    "build": "webpack src/index.js dist/index.js"
   },
   "repository": {
     "type": "git",
